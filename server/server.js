@@ -2,6 +2,10 @@
 
 
 const express = require('express'); //require is function that loads a library, a common library in node is 'express'
+const mysql = require('mysql');
+const mysqlcredentials = require('./mysqlcreds.js');
+const connection = mysql.createConnection(mysqlcredentials);
+
 const server = express();
 
 //.use() is a middleware
