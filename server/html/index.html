@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="components/student.js"></script>
+        <script type="text/javascript" src="components/sgt.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+        <meta name="viewport" content="initial-scale=1, user-scalable=no">
+    </head>
+    <body>
+        <div class="page-header">
+            <!-- only show this element when the not on mobile -->
+            <h1>Student Grade Table
+                <small>Grade Average : <span class="avgGrade">0.00</span></small>
+            </h1>
+            <!-- only show this element when the user gets to a mobile version -->
+            <h3>Student Grade Table
+                <small>Grade Average : <span class="avgGrade">0.00</span></small>
+            </h3>
+        </div>
+        <div class="main-container">
+            <div class="student-add-form">
+                <h4>Add Student</h4>
+                <div class="input-group">
+                <span class="input-group-icon">
+                    <i class="fas fa-user-alt"></i>
+                </span>
+                    <input type="text" name="studentName" id="studentName" placeholder="Student Name">
+                </div>
+                <div class="input-group">
+                <span class="input-group-icon">
+                    <i class="fas fa-list-alt"></i>
+                </span>
+                    <input type="text" name="course" id="studentCourse" placeholder="Student Course">
+                </div>
+                <div class="input-group">
+                <span class="input-group-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </span>
+                    <input type="text" name="studentGrade" id="studentGrade" placeholder="Student Grade">
+                </div>
+                <button type="button" class="add" id="addButton">Add</button>
+                <button type="button" class="cancel" id="cancelButton">Cancel</button>
+                <button type="button" class="server-data" id="serverDataButton">Get data From Server</button>
+            </div>
+            <div class="student-list-container page-header">
+                <table class="student-list">
+                    <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Student Course</th>
+                        <th>Student Grade</th>
+                        <th>Operations</th>
+                    </tr>
+                    </thead>
+                    <tbody id="displayArea"></tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
+

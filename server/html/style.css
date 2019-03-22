@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.page-header {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.page-header h1 {
+    display: none;
+}
+.page-header h3 {
+    display: inline;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+}
+
+h1 small, h3 small {
+    color: rgb(119, 119, 119);
+    font-weight: 400;
+}
+
+h3 small {
+    display: block;
+}
+
+.main-container {
+    width: 100%;
+    font-size: 0;
+}
+
+.main-container > div {
+    display: inline-block;
+}
+
+.student-add-form {
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.student-list-container {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}
+
+.student-add-form > h4 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.student-add-form > button {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 5px;
+    border-radius: 4px;
+}
+
+.add {
+    background-color: rgb(92, 184, 92);
+    color: white;
+    border: 1px rgb(76, 174, 76)
+}
+
+.cancel {
+    border: 1px solid rgb(204, 204, 204);
+}
+
+.input-group {
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    color: rgb(85, 85, 85);
+    font-weight: 400;
+}
+
+.input-group-icon {
+    position: absolute;
+    padding: 7px 12px;
+    text-align: center;
+    border: 1px solid rgb(204, 204, 204);
+    border-right: 1px solid rgb(85, 85, 85);
+    border-radius: 4px 0 0 4px;
+    background-color: rgb(238, 238, 238);
+    font-size: 14px;
+}
+
+.fa-graduation-cap {
+   font-size: 11px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    text-indent: 40px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.student-list {
+    width: 100%;
+    font-size: 14px;
+}
+#displayArea {
+    width: 100%;
+}
+
+tr {
+    height: 25px;
+    width: 100%;
+}
+
+th {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+td {
+    width: 25%;
+}
+
+td > button {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: rgb(197,18,54); /*linear-gradient(to bottom right, white, rgb(200, 0, 0))*/;
+    border: 1px solid rgb(150,14,41);
+    color: white;
+}
+
+@media (min-width: 1024px){
+    .page-header h1 {
+        display: inline;
+        padding: 15px;
+        font-weight: 500;
+        font-size: 36px;
+    }
+
+    h1 small {
+        float: right;
+    }
+
+    .page-header h3 {
+        display: none;
+    }
+
+    .main-container {
+        transform: rotate(180deg);
+    }
+
+    .main-container > div {
+       transform: rotate(-180deg);
+    }
+
+    .student-add-form {
+        width: 25%;
+    }
+
+    .student-list-container {
+        width: 75%;
+    }
+}
+

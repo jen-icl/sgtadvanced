@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "data": [{
+    "id": 1,
+    "name": "Jen Lai",
+    "course": "Algebra",
+    "grade": 80
+  }, {
+    "id": 2,
+    "name": "William Hammington",
+    "course": "Bill for short",
+    "grade": 100
+  }, {
+    "id": 3,
+    "name": "Robert Gee",
+    "course": "Bob for short",
+    "grade": 60
+  }]
+}
