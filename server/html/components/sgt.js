@@ -272,11 +272,11 @@ class SGT_template{
 
 	addServerData(name, course, grade){
 		$.ajax({
-			url: 'http://s-apis.learningfuze.com/sgt/create',
+			url: 'api/grades',
 			method: 'post',
 			dataType: 'json',
 			data: {
-				api_key: 'tLMl85d0PD',
+				//api_key: 'tLMl85d0PD',
 				name: name,
 				course: course,
 				grade: grade,
