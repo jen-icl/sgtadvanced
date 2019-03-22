@@ -248,7 +248,7 @@ class SGT_template{
 			method: 'get',
 			dataType: 'json',
 			data: {
-				api_key: 'tLMl85d0PD'
+				//api_key: 'tLMl85d0PD'
 			},
 			success: this.loadDataSuccess,
 			error: this.serverError
