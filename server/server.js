@@ -17,7 +17,7 @@ server.use(express.urlencoded( {extended: false}) ); //have express pull body da
 server.use(express.json()); // used for things like axios
 
 
-//make an endpoint to handle retrieving the grades of all students
+//make an endpoint to handle retrieving the grades of all students, get method
 server.get('/api/grades', (req, res) => {
     //establish the connection to the database, and call the callback function when connection is made
     db.connect( ()=> {
@@ -48,6 +48,7 @@ server.get('/api/grades', (req, res) => {
 
 
 //by default browser does get requests
+//create post endpoint, to handle adding students
 server.post('/api/grades', (request, response) => { //file path always starts with '/'
    //check body object and see if any data was not sent
     if(request.body.name === undefined || request.body.course === undefined || request.body.grade === undefined){
@@ -64,6 +65,7 @@ server.post('/api/grades', (request, response) => { //file path always starts wi
         const name = request.body.name.split(" "); //returns array of [givenname, surname]
         //create a hardcoded one and test in phpMyAdmin first
         const query = 'INSERT INTO `grades` SET `surname`="'+name[1]+'", `givenname`="'+name[0]+'", `course`="'+request.body.course+'", `grade`='+request.body.grade+', `added`=NOW()';
+        //'INSERT INTO  `grades` (`surname`,`givenname`,`course`,`grades`,`added`) VALUES ("Lai","Jen","math",80,NOW()), ("Paschal","Dan","math",90,NOW())'
         db.query(query, (error, result) => {
             if(!error){
                 response.send({
@@ -77,8 +79,31 @@ server.post('/api/grades', (request, response) => { //file path always starts wi
                 });
             }
         });
-        //'INSERT INTO  `grades` (`surname`,`givenname`,`course`,`grades`,`added`) VALUES ("Lai","Jen","math",80,NOW()), ("Paschal","Dan","math",90,NOW())'
+    });
+});
 
+server.delete('/api/grades', (request, response) => {
+    if(request.query.student_id === undefined){
+        response.send({
+            success: false,
+            error: 'must provide a student id for delete'
+        });
+        return;
+    }
+    db.connect(() => {
+        const query = 'DELETE FROM `grades` WHERE `id`=' + request.query.student_id;
+        db.query(query, (error, result) => {
+            if(!error){
+                response.send({
+                    success: true
+                });
+            } else {
+                response.send({
+                    success: false,
+                    error
+                });
+            }
+        })
     });
 });
 

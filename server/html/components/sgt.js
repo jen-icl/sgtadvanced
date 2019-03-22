@@ -298,12 +298,12 @@ class SGT_template{
 
 	deleteServerData(id){
 		$.ajax({
-			url: 'http://s-apis.learningfuze.com/sgt/delete',
-			method: 'post',
+			url: 'api/grades?student_id=' + id,
+			method: 'delete',
 			dataType: 'json',
 			data: {
-				api_key: 'tLMl85d0PD',
-				student_id: id,
+				//api_key: 'tLMl85d0PD',
+				//student_id: id,
 			},
 			success: this.deleteDataSuccess,
 			error: this.serverError
