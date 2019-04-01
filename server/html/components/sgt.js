@@ -2,11 +2,11 @@
 //commented out this.clearInputs() in handleAdd() and this.deleteStudent callback in createStudent()
 
 class SGT_template{
-	/* constructor - sets up sgt object 
+	/* constructor - sets up sgt object
 	params: (object) elementConfig - all pre-made dom elements used by the app
-	purpose: 
+	purpose:
 		- Instantiates a model and stores pre-made dom elements it this object
-		- Additionally, will generate an object to store created students 
+		- Additionally, will generate an object to store created students
 		  who exists in our content management system (CMS)
 	return: undefined
 	ESTIMATED TIME: 1 hour
@@ -74,9 +74,9 @@ class SGT_template{
 	}
 
 	/* displayAllStudents - iterate through all students in the model
-	purpose: 
-		grab all students from model, 
-		iterate through the retrieved list, 
+	purpose:
+		grab all students from model,
+		iterate through the retrieved list,
 		then render every student's dom element
 		then append every student to the dom's display area
 		then display the grade average
@@ -95,7 +95,7 @@ class SGT_template{
 	/* displayAverage - get the grade average and display it
 	purpose: grab the average grade from the model, and show it on the dom
 	params: none
-	return: undefined 
+	return: undefined
 	ESTIMATED TIME: 15 minutes
 	*/
 
@@ -117,11 +117,11 @@ class SGT_template{
 		course : the student's course
 		grade: the student's grade
 		id: the id of the student
-	purpose: 
+	purpose:
 			If no id is present, it must pick the next available id that can be used
-			when it creates the Student object, it must pass the id, name, course, grade, 
+			when it creates the Student object, it must pass the id, name, course, grade,
 			and a reference to SGT's deleteStudent method
-	params: 
+	params:
 		name : the student's name
 		course : the student's course
 		grade: the student's grade
@@ -152,11 +152,11 @@ class SGT_template{
 		}
 	}
 
-	/* doesStudentExist - 
+	/* doesStudentExist -
 		determines if a student exists by ID.  returns true if yes, false if no
-	purpose: 
+	purpose:
 			check if passed in ID is a value, if it exists in this.data, and return the presence of the student
-	params: 
+	params:
 		id: (number) the id of the student to search for
 	return: false if id is undefined or that student doesn't exist, true if the student does exist
 	ESTIMATED TIME: 15 minutes
@@ -168,15 +168,15 @@ class SGT_template{
 			return false;
 		}
 	}
-	/* readStudent - 
+	/* readStudent -
 		get the data for one or all students
-	purpose: 
+	purpose:
 			determines if ID is given or not
 			if ID is given, return the student by that ID, if present
 			if ID is not given, return all students in an array
-	params: 
+	params:
 		id: (number)(optional) the id of the student to search for, if any
-	return: 
+	return:
 		a singular Student object if an ID was given, an array of Student objects if no ID was given
 		ESTIMATED TIME: 45 minutes
 	*/
@@ -195,19 +195,19 @@ class SGT_template{
 			return dataArray;
 		}
 	}
-	/* updateStudent - 
+	/* updateStudent -
 		not used for now.  Will be used later
 		pass in an ID, a field to change, and a value to change the field to
-	purpose: 
+	purpose:
 		finds the necessary student by the given id
 		finds the given field in the student (name, course, grade)
 		changes the value of the student to the given value
 		for example updateStudent(2, 'name','joe') would change the name of student 2 to "joe"
-	params: 
+	params:
 		id: (number) the id of the student to change in this.data
 		field: (string) the field to change in the student
 		value: (multi) the value to change the field to
-	return: 
+	return:
 		true if it updated, false if it did not
 		ESTIMATED TIME: no needed for first versions: 30 minutes
 	*/
@@ -220,16 +220,16 @@ class SGT_template{
 			return false;
 		}
 	}
-	/* deleteStudent - 
+	/* deleteStudent -
 		delete the given student at the given id
-	purpose: 
+	purpose:
 			determine if the ID exists in this.data
 			remove it from the object
 			return true if successful, false if not
 			this is often called by the student's delete button through the Student handleDelete
-	params: 
+	params:
 		id: (number) the id of the student to delete
-	return: 
+	return:
 		true if it was successful, false if not
 		ESTIMATED TIME: 30 minutes
 	*/
@@ -298,7 +298,7 @@ class SGT_template{
 
 	deleteServerData(id){
 		$.ajax({
-			url: 'api/grades?student_id=' + id,
+			url: 'api/grades/' + id,
 			method: 'delete',
 			dataType: 'json',
 			data: {

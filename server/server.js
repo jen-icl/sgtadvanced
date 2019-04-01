@@ -6,12 +6,14 @@
 const express = require('express');//load the express library into the file
 const mysql = require('mysql'); //load the mysql library
 const mysqlcredentials = require('./mysqlcreds.js'); //load the credentials from a local file for mysql
+const cors = require('cors');
 
 //using the credentials that we loaded, establish a preliminary connection to the database
 const db = mysql.createConnection( mysqlcredentials );
 
 const server = express();
 
+server.use(cors());
 server.use( express.static( __dirname + '/html' ) );
 server.use(express.urlencoded( {extended: false}) ); //have express pull body data that is urlencoded and place it into an object called "body"
 server.use(express.json()); // used for things like axios
@@ -82,8 +84,8 @@ server.post('/api/grades', (request, response) => { //file path always starts wi
     });
 });
 
-server.delete('/api/grades', (request, response) => {
-    if(request.query.student_id === undefined){
+server.delete('/api/grades/:student_id', (request, response) => {
+    if(request.params.student_id === undefined){
         response.send({
             success: false,
             error: 'must provide a student id for delete'
@@ -91,7 +93,7 @@ server.delete('/api/grades', (request, response) => {
         return;
     }
     db.connect(() => {
-        const query = 'DELETE FROM `grades` WHERE `id`=' + request.query.student_id;
+        const query = 'DELETE FROM `grades` WHERE `id`=' + request.params.student_id;
         db.query(query, (error, result) => {
             if(!error){
                 response.send({
@@ -111,71 +113,3 @@ server.listen(3001, ()=>{
     //console.log('server is running on port 3001');
     console.log('carrier has arrived');
 });
-
-// const express = require('express'); //require is function that loads a library, a common library in node is 'express'
-// const mysql = require('mysql');
-// const mysqlcredentials = require('./mysqlcreds.js');
-// const db = mysql.createConnection(mysqlcredentials);
-//
-// const server = express();
-//
-// //.use() is a middleware
-// //express.static() accepts an argument: path (go to '/html' directory)
-// server.use(express.static(__dirname + '/html'));
-//
-// server.get('/api/grades', (req, res) => { //when port receives a request at that url '/api/grades' call function
-//     db.connect(() => {
-//         const query = 'SELECT `id`, CONCAT(`givenname`,\" \",`surname`) AS `name`, `course`, `grade` FROM `grades`'
-//         db.query(query, (error, data, ) => { //error is an object otherwise is null
-//             const output = {
-//                 success: false,
-//             };
-//             if(!error){
-//                 output.success =  true;
-//                 output.data = data; //ES6 key and values are both data, just write data
-//             } else {
-//                 output.error = error;
-//             }
-//             res.send(output);
-//         });
-//     });
-// });
-//
-// server.listen(3001, ()=>{ //listen is a method, param1: port, param2: callback
-//     console.log('server is running on port 3001');
-//     console.log('carrier has arrived');
-// });
-
-
-
-
-/*
-var insults = [
-    'your father smelt of elderberries',
-    'you program on an altaire',
-    'i bet you still use var',
-    'stop copying Dan',
-    'one line functions are for chumps'
-];
-
-//create endpoints
-//get method
-//accepts argument1: the path to listen for, argument2: callback function to call once that path has been received
-server.get('/', (request, response)=>{
-    //accepts 2 parameters:
-    //an object representing all of the data coming from the client to the server
-    //an object representing all of the data going from the server to the client
-    response.send('Hello, World.')
-});
-
-server.get('/time', (request, response)=> {
-    var now = new Date();
-    response.send(now.toLocaleDateString());
-});
-
-server.get('/insult', (request, response)=>{
-    var randomIndex = Math.floor(Math.random() * (insults.length));
-    var message = insults[randomIndex];
-    response.send(message);
-});
- */
